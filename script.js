@@ -1,7 +1,5 @@
 const giftBox = document.getElementById('gift-box');
 const lettersContainer = document.getElementById('letters-container');
-const prevButton = document.getElementById('prev-button');
-const nextButton = document.getElementById('next-button');
 const messages = [
   "Dear John, wishing you...", "Hello! This is a message from...", 
   "To a special friend...", "Warmest regards on...", 
@@ -16,28 +14,28 @@ const messages = [
 ];
 
 let currentPage = 0;
-const cardsPerPage = 10;
+const cardsPerPage = 6;
 
-// Function to create a single card element
+// Function to create a single letter card
 function createLetterCard(index) {
   const letter = document.createElement('div');
   letter.classList.add('letter');
 
-  // Front of the card (number)
+  // Front side of the card (number)
   const front = document.createElement('div');
   front.classList.add('face', 'front');
   front.innerText = index + 1;
 
-  // Back of the card (message)
+  // Back side of the card (message)
   const back = document.createElement('div');
   back.classList.add('face', 'back');
   back.innerText = messages[index];
 
-  // Add front and back to the letter div
+  // Add front and back to the letter card
   letter.appendChild(front);
   letter.appendChild(back);
 
-  // Event listener to reveal message on click
+  // Add event listener to toggle reveal
   letter.addEventListener('click', () => {
     letter.classList.toggle('revealed');
   });
@@ -45,7 +43,7 @@ function createLetterCard(index) {
   return letter;
 }
 
-// Function to display cards for the current page
+// Function to display the current page of cards
 function displayPage() {
   lettersContainer.innerHTML = '';
   const start = currentPage * cardsPerPage;
@@ -55,34 +53,12 @@ function displayPage() {
     const letterCard = createLetterCard(i);
     lettersContainer.appendChild(letterCard);
   }
-
-  // Update button states
-  prevButton.disabled = currentPage === 0;
-  nextButton.disabled = end >= messages.length;
 }
 
-// Show letters when gift box is clicked or touched
-function showLetters() {
+// Show the gift box on click
+giftBox.addEventListener('click', () => {
   lettersContainer.style.display = 'grid';
-  document.querySelector('.pagination').style.display = 'flex';
   giftBox.style.display = 'none';
   displayPage();
-}
-
-giftBox.addEventListener('click', showLetters);
-giftBox.addEventListener('touchstart', showLetters);
-
-// Pagination controls
-nextButton.addEventListener('click', () => {
-  if ((currentPage + 1) * cardsPerPage < messages.length) {
-    currentPage++;
-    displayPage();
-  }
 });
 
-prevButton.addEventListener('click', () => {
-  if (currentPage > 0) {
-    currentPage--;
-    displayPage();
-  }
-});
