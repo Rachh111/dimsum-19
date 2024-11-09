@@ -6,85 +6,93 @@ body {
   justify-content: center;
   height: 100vh;
   margin: 0;
-  background: linear-gradient(135deg, #e3f2fd, #64b5f6);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #fff;
+  background: linear-gradient(135deg, #e0f7fa, #80deea);
+  font-family: Arial, sans-serif;
   overflow: hidden;
 }
 
 /* Gift Box Styling */
 .gift-box {
-  font-size: 7rem;
+  font-size: 6rem;
   color: #0288d1;
   cursor: pointer;
-  transition: transform 0.4s ease, color 0.4s ease;
-  text-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 .gift-box:hover {
-  transform: scale(1.2) rotate(15deg);
-  color: #0277bd;
+  transform: scale(1.2) rotate(10deg);
 }
 
 /* Letters Container Styling */
 .letters-container {
   display: none;
-  width: 85vw;
-  max-width: 1100px;
+  width: 80vw;
   max-height: 70vh;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-gap: 25px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
   justify-items: center;
   align-items: center;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  transition: all 0.4s ease;
+}
+
+/* Responsive Grid Layout for Tablets and Smaller Devices */
+@media (max-width: 768px) {
+  .letters-container {
+    grid-template-columns: 1fr; /* Single column for small devices */
+  }
 }
 
 /* Pagination Controls */
 .pagination {
-  display: none; /* Hidden initially */
+  display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100%;
+  width: 80vw;
   margin-top: 20px;
-  gap: 20px;
 }
 .pagination button {
-  padding: 12px 25px;
+  padding: 10px 20px;
   background-color: #0288d1;
-  color: #e3f2fd;
+  color: #e0f7fa;
   border: none;
-  border-radius: 8px;
+  border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease;
 }
 .pagination button:hover {
   background-color: #0277bd;
-  transform: scale(1.05);
 }
 .pagination button:disabled {
-  background-color: #b3e5fc;
-  color: #0288d1;
+  background-color: #90caf9;
   cursor: not-allowed;
+}
+
+/* Responsive Pagination Button Layout */
+@media (max-width: 768px) {
+  .pagination {
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+  }
 }
 
 /* Letter Card Styles */
 .letter {
-  width: 200px;
+  width: 250px;
   height: 150px;
-  background-color: #81d4fa;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  background-color: #bbdefb;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.6s;
   cursor: pointer;
-  perspective: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 /* Flip Animation */
@@ -97,7 +105,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: 12px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -107,37 +115,31 @@ body {
 }
 
 .front {
-  background-color: #81d4fa;
-  color: #01579b;
-  font-size: 2rem;
-  font-weight: bold;
+  background-color: #bbdefb;
+  color: #0288d1;
 }
 
 .back {
   background-color: #0288d1;
-  color: #e3f2fd;
+  color: #e0f7fa;
   transform: rotateY(180deg);
-  font-size: 0.9rem;
-  font-weight: normal;
-  text-align: center;
-  padding: 12px;
-  line-height: 1.4;
 }
 
-/* Responsive Layout Adjustments */
+/* Adjust Card Size for Smaller Screens */
 @media (max-width: 768px) {
-  body {
-    padding: 0 10px;
-  }
-  .letters-container {
-    width: 100%;
-    max-height: 65vh;
-  }
   .letter {
-    width: 90%;
-    height: 130px;
+    width: 90%; /* Card takes up more space */
+    height: 120px;
+    font-size: 1.2rem; /* Increase text size for better readability */
   }
-  .pagination {
-    gap: 10px;
+  .pagination button {
+    font-size: 0.9rem; /* Smaller button text on mobile */
+  }
+}
+
+/* Font size and padding adjustments for mobile */
+@media (max-width: 480px) {
+  .gift-box {
+    font-size: 5rem; /* Smaller gift box icon for small screens */
   }
 }
