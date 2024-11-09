@@ -28,20 +28,15 @@ body {
 /* Letters Container Styling */
 .letters-container {
   display: none;
-  width: 80vw;
+  width: 90vw;
   max-height: 70vh;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
+  grid-template-columns: repeat(2, 1fr); /* Show 2 cards per row on mobile */
+  grid-gap: 15px;
   justify-items: center;
   align-items: center;
-}
-
-/* Responsive Grid Layout for Mobile Devices */
-@media (max-width: 768px) {
-  .letters-container {
-    grid-template-columns: 1fr; /* Single column for small devices */
-  }
+  overflow-y: auto; /* Allow scrolling if needed */
+  padding-bottom: 20px;
 }
 
 /* Pagination Controls */
@@ -72,19 +67,10 @@ body {
   cursor: not-allowed;
 }
 
-/* Pagination Button Layout */
-@media (max-width: 768px) {
-  .pagination {
-    width: 100%;
-    justify-content: center;
-    gap: 10px;
-  }
-}
-
 /* Letter Card Styles */
 .letter {
-  width: 250px;
-  height: 150px;
+  width: 100%;
+  height: 120px;
   background-color: #bbdefb;
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -130,31 +116,26 @@ body {
   transform: rotateY(180deg);
 }
 
-/* Adjust Card Size for Smaller Screens */
+/* Adjust Card Size and Text for Mobile */
 @media (max-width: 768px) {
-  .letter {
-    width: 90%; /* Card takes up more space */
-    height: 120px;
-    font-size: 1.2rem; /* Increase text size for better readability */
-  }
-  .pagination button {
-    font-size: 0.9rem; /* Smaller button text on mobile */
-  }
-}
-
-/* Font size and padding adjustments for small phones */
-@media (max-width: 480px) {
   .gift-box {
-    font-size: 4rem; /* Smaller gift box icon for small screens */
+    font-size: 5rem; /* Slightly smaller gift box on mobile */
   }
 
   .letter {
-    font-size: 1rem; /* Adjust font size inside the cards */
-    height: 100px;
+    width: 100%; /* Make cards take full width of the column */
+    height: 150px;
+    font-size: 1.1rem; /* Adjust font size inside the cards for readability */
   }
 
   .pagination button {
     padding: 8px 15px;
-    font-size: 0.8rem;
+    font-size: 0.9rem; /* Smaller font size for pagination buttons */
+  }
+
+  /* Show 3 cards per row on slightly larger mobile screens */
+  .letters-container {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
+
