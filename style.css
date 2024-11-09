@@ -18,7 +18,9 @@ body {
   cursor: pointer;
   transition: transform 0.3s ease;
   text-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  margin-bottom: 20px;
 }
+
 .gift-box:hover {
   transform: scale(1.2) rotate(10deg);
 }
@@ -35,7 +37,7 @@ body {
   align-items: center;
 }
 
-/* Responsive Grid Layout for Tablets and Smaller Devices */
+/* Responsive Grid Layout for Mobile Devices */
 @media (max-width: 768px) {
   .letters-container {
     grid-template-columns: 1fr; /* Single column for small devices */
@@ -49,6 +51,7 @@ body {
   width: 80vw;
   margin-top: 20px;
 }
+
 .pagination button {
   padding: 10px 20px;
   background-color: #0288d1;
@@ -59,15 +62,17 @@ body {
   font-size: 1rem;
   transition: background-color 0.3s ease;
 }
+
 .pagination button:hover {
   background-color: #0277bd;
 }
+
 .pagination button:disabled {
   background-color: #90caf9;
   cursor: not-allowed;
 }
 
-/* Responsive Pagination Button Layout */
+/* Pagination Button Layout */
 @media (max-width: 768px) {
   .pagination {
     width: 100%;
@@ -137,9 +142,19 @@ body {
   }
 }
 
-/* Font size and padding adjustments for mobile */
+/* Font size and padding adjustments for small phones */
 @media (max-width: 480px) {
   .gift-box {
-    font-size: 5rem; /* Smaller gift box icon for small screens */
+    font-size: 4rem; /* Smaller gift box icon for small screens */
+  }
+
+  .letter {
+    font-size: 1rem; /* Adjust font size inside the cards */
+    height: 100px;
+  }
+
+  .pagination button {
+    padding: 8px 15px;
+    font-size: 0.8rem;
   }
 }
